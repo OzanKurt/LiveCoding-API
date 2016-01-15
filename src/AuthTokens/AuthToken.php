@@ -1,10 +1,12 @@
 <?php
 
+namespace Kurt\LiveCoding\AuthTokens;
+
 /**
-* @class LivecodingAuthTokens
-* LivecodingAuthTokens is intended to be semi-abstract
-* Only its subclasses should be instantiated
-**/
+ * @class AuthToken
+ * AuthToken is intended to be semi-abstract
+ * Only it's subclasses should be instantiated
+ */
 abstract class AuthToken
 {
 
