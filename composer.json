@@ -1,0 +1,20 @@
+{
+  "name": "ozankurt/livecoding-api",
+  "description": "PHP wrapper for LiveCoding.TV API",
+  "keywords": ["livecoding", "oauth", "api"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ozan Kurt",
+      "email": "ozankurt2@gmail.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^6.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kurt\\LiveCoding\\": "src/"
+    }
+  }
+}
