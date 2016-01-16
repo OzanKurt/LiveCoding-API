@@ -9,9 +9,8 @@ namespace Kurt\LiveCoding\AuthTokens;
  */
 abstract class AuthToken
 {
-
     /**
-     * Store token data to subclass defined backend
+     * Store token data to subclass defined backend.
      **/
     public function storeTokens($tokens)
     {
@@ -27,7 +26,7 @@ abstract class AuthToken
     }
 
     /**
-     * Determine if our access token needs to be refreshed
+     * Determine if our access token needs to be refreshed.
      **/
     public function is_stale()
     {
@@ -35,120 +34,119 @@ abstract class AuthToken
     }
 
     /**
-     * Concatenate current auth token to param string for data request
+     * Concatenate current auth token to param string for data request.
      **/
     public function makeAuthParam()
     {
         return 'Authorization: '.$this->getTokenType().' '.$this->getAccessToken();
     }
 
- 	/**
- 	 * Subclasses should override these getters and setters
- 	 */
- 	
- 	/**
- 	 * [isAuthorized description]
- 	 * 
- 	 * @return boolean [description]
- 	 */
+    /**
+     * Subclasses should override these getters and setters.
+     */
+
+    /**
+     * [isAuthorized description].
+     * 
+     * @return bool [description]
+     */
     abstract public function isAuthorized();
 
     /**
-     * [getCode description]
+     * [getCode description].
      * 
      * @return [type] [description]
      */
     abstract public function getCode();
 
     /**
-     * [setCode description]
+     * [setCode description].
      * 
      * @param [type] $code [description]
      */
     abstract public function setCode($code);
-    
+
     /**
-     * [getState description]
+     * [getState description].
      * 
      * @return [type] [description]
      */
     abstract public function getState();
-    
+
     /**
-     * [setState description]
+     * [setState description].
      * 
      * @return [type] [description]
      */
     abstract public function setState($state);
-    
+
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
     abstract public function getAccessToken();
-    
+
     /**
-     * [setAccessToken description]
+     * [setAccessToken description].
      * 
      * @return [type] [description]
      */
     abstract public function setAccessToken($access_token);
-    
+
     /**
-     * [getTokenType description]
+     * [getTokenType description].
      * 
      * @return [type] [description]
      */
     abstract public function getTokenType();
-    
+
     /**
-     * [setTokenType description]
+     * [setTokenType description].
      * 
      * @return [type] [description]
      */
     abstract public function setTokenType($token_type);
-    
+
     /**
-     * [getRefreshToken description]
+     * [getRefreshToken description].
      * 
      * @return [type] [description]
      */
     abstract public function getRefreshToken();
-    
+
     /**
-     * [setRefreshToken description]
+     * [setRefreshToken description].
      * 
      * @return [type] [description]
      */
     abstract public function setRefreshToken($refresh_token);
-    
+
     /**
-     * [getExpiresIn description]
+     * [getExpiresIn description].
      * 
      * @return [type] [description]
      */
     abstract public function getExpiresIn();
-    
+
     /**
-     * [setExpiresIn description]
+     * [setExpiresIn description].
      * 
      * @return [type] [description]
      */
     abstract public function setExpiresIn($expires_in);
-    
+
     /**
-     * [getScope description]
+     * [getScope description].
      * 
      * @return [type] [description]
      */
     abstract public function getScope();
-    
+
     /**
-     * [setScope description]
+     * [setScope description].
      * 
      * @return [type] [description]
      */
     abstract public function setScope($scope);
 }
-

@@ -2,9 +2,7 @@
 
 namespace Kurt\LiveCoding\Exceptions;
 
-class InvalidRedirectUrlException extends \Exception 
+class InvalidRedirectUrlException extends \Exception
 {
-
-	protected $message = 'Please provide a valid `redirectUrl` for the client.';
-
+    protected $message = 'Please provide a valid `redirectUrl` for the client.';
 }
