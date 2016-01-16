@@ -23,7 +23,7 @@ class LiveCoding
     
     protected $auth_link;
     
-    protected $api_url = 'https://www.livecoding.tv:443/api/';
+    protected $api_url = 'https://www.livecoding.tv:443/api';
     protected $token_url = 'https://www.livecoding.tv/o/token/';
 
     protected $api_req_params;
@@ -87,7 +87,7 @@ class LiveCoding
 	public function initializeGuzzleClient()
 	{
 		$this->guzzle = new \GuzzleHttp\Client([
-			// 'base_uri' => $this->api_url
+			'verify' => false,
 		]);
 	}
 
@@ -186,5 +186,27 @@ class LiveCoding
      */
     public function getAuthLink() {
       return $this->auth_link;
+    }
+
+    public function user($username = '')
+    {
+    	$this->sendApiRequest("users/{$username}");
+    }
+
+    protected function sendApiRequest($url, $headers = [])
+    {
+    	$url = $this->api_url.'/'.$url;
+
+    	$this->guzzle->get($url, [
+    		'auth' => [
+        		$this->client->getId(), 
+        		$this->client->getSecret(),
+        	],
+        	'headers' => $headers,
+        ]);
+
+        $response = $request->send();
+
+        dd($response);
     }
 }
