@@ -4,10 +4,9 @@ namespace Kurt\LiveCoding\AuthTokens;
 
 class SessionAuthToken extends AuthToken
 {
-
-	/**
-	 * [__construct description]
-	 */
+    /**
+     * [__construct description].
+     */
     public function __construct()
     {
         if (!isset($_SESSION)) {
@@ -16,9 +15,9 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [isAuthorized description]
+     * [isAuthorized description].
      * 
-     * @return boolean
+     * @return bool
      */
     public function isAuthorized()
     {
@@ -26,7 +25,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getCode description]
+     * [getCode description].
      * 
      * @return [type]
      */
@@ -36,7 +35,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [setCode description]
+     * [setCode description].
      * 
      * @param [type] $code
      */
@@ -46,17 +45,17 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getState description]
+     * [getState description].
      * 
      * @return [type] [description]
      */
     public function getState()
     {
-        return $_SESSION['state'] ;
+        return $_SESSION['state'];
     }
 
     /**
-     * [setState description]
+     * [setState description].
      * 
      * @param [type] $state [description]
      */
@@ -66,7 +65,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getScope description]
+     * [getScope description].
      * 
      * @return [type] [description]
      */
@@ -76,7 +75,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [setScope description]
+     * [setScope description].
      * 
      * @param [type] $scope [description]
      */
@@ -86,7 +85,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getTokenType description]
+     * [getTokenType description].
      * 
      * @return [type] [description]
      */
@@ -96,7 +95,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [setTokenType description]
+     * [setTokenType description].
      * 
      * @param [type] $token_type [description]
      */
@@ -106,7 +105,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -116,7 +115,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -126,7 +125,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -136,7 +135,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -146,7 +145,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -156,7 +155,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */

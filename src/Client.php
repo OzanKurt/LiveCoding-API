@@ -2,59 +2,63 @@
 
 namespace Kurt\LiveCoding;
 
-use Kurt\LiveCoding\Scopes\Scope;
 use Kurt\LiveCoding\Scopes\ReadScope;
-use Kurt\LiveCoding\Storages\Storage;
-use Kurt\LiveCoding\Storages\TextStorage;
+use Kurt\LiveCoding\Scopes\Scope;
 use Kurt\LiveCoding\Storages\SessionStorage;
+use Kurt\LiveCoding\Storages\Storage;
 
 class Client
 {
-
     /**
-     * LiveCodingTV application client id
+     * LiveCodingTV application client id.
+     *
      * @var string
      */
     protected $id;
 
     /**
-     * LiveCodingTV application client secret
+     * LiveCodingTV application client secret.
+     *
      * @var string
      */
     protected $secret;
 
     /**
-     * LiveCodingTV application redirect url 
+     * LiveCodingTV application redirect url.
+     *
      * @var string
      */
     protected $redirectUrl;
-    
+
     /**
-     * Scope instance
+     * Scope instance.
+     *
      * @var Kurt\LiveCoding\Scopes\Scope
      */
     protected $scope;
-    
+
     /**
-     * Storage instance
+     * Storage instance.
+     *
      * @var Kurt\LiveCoding\Storages\Storage
      */
     protected $storage;
-    
+
     /**
-     * Exception instances
+     * Exception instances.
+     *
      * @var \Exception
      */
     protected $exceptions = [
-        'id'            => \Kurt\LiveCoding\Exceptions\InvalidClientIdException::class,
-        'secret'        => \Kurt\LiveCoding\Exceptions\InvalidClientSecretException::class,
+        'id'             => \Kurt\LiveCoding\Exceptions\InvalidClientIdException::class,
+        'secret'         => \Kurt\LiveCoding\Exceptions\InvalidClientSecretException::class,
         'redirectUrl'    => \Kurt\LiveCoding\Exceptions\InvalidRedirectUrlException::class,
-        'scope'        => \Kurt\LiveCoding\Exceptions\InvalidScopeException::class,
+        'scope'          => \Kurt\LiveCoding\Exceptions\InvalidScopeException::class,
         'storage'        => \Kurt\LiveCoding\Exceptions\InvalidStorageException::class,
     ];
-    
+
     /**
-     * [__construct description]
+     * [__construct description].
      * 
      * @param array $credentials
      */
@@ -64,9 +68,10 @@ class Client
     }
 
     /**
-     * [initializeCredentials description]
+     * [initializeCredentials description].
      * 
-     * @param  array $credentials
+     * @param array $credentials
+     *
      * @return void
      */
     private function initializeCredentials($credentials)
@@ -75,15 +80,16 @@ class Client
 
         foreach ($credentials as $key => $value) {
             $this->checkCredential([$key => $value]);
-            
+
             $this->$key = $value;
         }
     }
 
     /**
-     * [mergeWithDefaults description]
+     * [mergeWithDefaults description].
      * 
-     * @param  array $credentials
+     * @param array $credentials
+     *
      * @return array
      */
     private function mergeWithDefaults($credentials)
@@ -102,25 +108,26 @@ class Client
     }
 
     /**
-     * [getDefaults description]
+     * [getDefaults description].
      * 
      * @return array
      */
     private function getDefaults()
     {
         return [
-            'id' => '',
-            'secret' => '',
+            'id'          => '',
+            'secret'      => '',
             'redirectUrl' => '',
-            'scope' => new ReadScope,
-            'storage' => new SessionStorage,
+            'scope'       => new ReadScope(),
+            'storage'     => new SessionStorage(),
         ];
     }
 
     /**
-     * [checkCredential description]
+     * [checkCredential description].
      * 
-     * @param  array $credential
+     * @param array $credential
+     *
      * @return void
      */
     private function checkCredential($credential)
@@ -146,19 +153,21 @@ class Client
     }
 
     /**
-     * [throwExceptionFor description]
+     * [throwExceptionFor description].
      * 
-     * @param  string $key
-     * @return void
+     * @param string $key
+     *
      * @throws \Exception
+     *
+     * @return void
      */
     private function throwExceptionFor($key)
     {
-        throw new $this->exceptions[$key];
+        throw new $this->exceptions[$key]();
     }
 
     /**
-     * [usesSessionStorage description]
+     * [usesSessionStorage description].
      * 
      * @return bool
      */
@@ -168,7 +177,7 @@ class Client
     }
 
     /**
-     * [usesTextStorage description]
+     * [usesTextStorage description].
      * 
      * @return bool
      */
@@ -178,7 +187,7 @@ class Client
     }
 
     /**
-     * [getId description]
+     * [getId description].
      * 
      * @return string
      */
@@ -188,7 +197,7 @@ class Client
     }
 
     /**
-     * [getSecret description]
+     * [getSecret description].
      * 
      * @return Secret
      */
@@ -198,7 +207,7 @@ class Client
     }
 
     /**
-     * [getRedirectUrl description]
+     * [getRedirectUrl description].
      * 
      * @return string
      */
@@ -208,7 +217,7 @@ class Client
     }
 
     /**
-     * [getScope description]
+     * [getScope description].
      * 
      * @return Scope
      */
@@ -218,7 +227,7 @@ class Client
     }
 
     /**
-     * [getStorage description]
+     * [getStorage description].
      * 
      * @return Storage
      */

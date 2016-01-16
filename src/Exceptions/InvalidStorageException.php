@@ -2,9 +2,7 @@
 
 namespace Kurt\LiveCoding\Exceptions;
 
-class InvalidStorageException extends \Exception 
+class InvalidStorageException extends \Exception
 {
-
-	protected $message = 'Please provide a valid `storage` for the client.';
-
+    protected $message = 'Please provide a valid `storage` for the client.';
 }

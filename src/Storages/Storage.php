@@ -4,12 +4,10 @@ namespace Kurt\LiveCoding\Storages;
 
 abstract class Storage
 {
+    protected $text;
 
-	protected $text;
-
-	public function getText()
-	{
-		return $this->text;
-	}
-
+    public function getText()
+    {
+        return $this->text;
+    }
 }

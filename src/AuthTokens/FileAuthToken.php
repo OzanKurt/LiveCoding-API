@@ -5,42 +5,42 @@ namespace Kurt\LiveCoding\AuthTokens;
 class FileAuthToken extends AuthToken
 {
     /**
-     * [$fileManager description]
+     * [$fileManager description].
      * 
      * @var [type]
      */
     protected $fileManager;
 
-	/**
-	 * [__construct description]
-	 */
+    /**
+     * [__construct description].
+     */
     public function __construct()
     {
-        $this->fileManager = new FileManager;
+        $this->fileManager = new FileManager();
     }
 
     /**
-     * [isAuthorized description]
+     * [isAuthorized description].
      * 
-     * @return boolean
+     * @return bool
      */
     public function isAuthorized()
     {
-        return $this->fileManager->exists('code') ;
+        return $this->fileManager->exists('code');
     }
 
     /**
-     * [getCode description]
+     * [getCode description].
      * 
      * @return [type]
      */
     public function getCode()
     {
-        return $this->fileManager->get('code') ;
+        return $this->fileManager->get('code');
     }
 
     /**
-     * [setCode description]
+     * [setCode description].
      * 
      * @param [type] $code
      */
@@ -50,17 +50,17 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getState description]
+     * [getState description].
      * 
      * @return [type] [description]
      */
     public function getState()
     {
-        return $this->fileManager->get('state') ;
+        return $this->fileManager->get('state');
     }
 
     /**
-     * [setState description]
+     * [setState description].
      * 
      * @param [type] $state [description]
      */
@@ -70,7 +70,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getScope description]
+     * [getScope description].
      * 
      * @return [type] [description]
      */
@@ -80,7 +80,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [setScope description]
+     * [setScope description].
      * 
      * @param [type] $scope [description]
      */
@@ -90,7 +90,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getTokenType description]
+     * [getTokenType description].
      * 
      * @return [type] [description]
      */
@@ -100,7 +100,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [setTokenType description]
+     * [setTokenType description].
      * 
      * @param [type] $token_type [description]
      */
@@ -110,7 +110,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -120,7 +120,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -130,7 +130,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -140,7 +140,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -150,7 +150,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -160,7 +160,7 @@ class FileAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description]
+     * [getAccessToken description].
      * 
      * @return [type] [description]
      */
@@ -168,5 +168,4 @@ class FileAuthToken extends AuthToken
     {
         $this->fileManager->put('expires_in', $expires_in);
     }
-    
 }
