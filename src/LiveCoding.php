@@ -8,6 +8,8 @@ use Kurt\LiveCoding\AuthTokens\SessionAuthToken;
 
 class LiveCoding
 {
+    use HelperMethods;
+
     /**
      * LiveCodingTV client instance.
      *
@@ -205,35 +207,16 @@ class LiveCoding
         return $this->auth_link;
     }
 
-    public function user($username = '')
+    protected function sendApiRequest($url)
     {
-        if ($this->tokens->is_stale()) {
-            $this->refreshToken();
-        }
-        
-        $this->api_req_params[2] = $this->tokens->makeAuthParam();
+        $url = trim($this->api_url.'/'.$url, '/').'/';
 
-        $this->sendApiRequest("users/{$username}", $this->api_req_params);
-    }
+        $headers = $this->api_req_params;
 
-    public function livestreams()
-    {
-        if ($this->tokens->is_stale()) {
-            $this->refreshToken();
-        }
-
-        $this->api_req_params[2] = $this->tokens->makeAuthParam();
-
-        $res = $this->sendApiRequest("livestreams/", $this->api_req_params);
-
-        dd($res);
-
-        // $this->sendApiRequest("livestreams", $this->api_req_params);
-    }
-
-    protected function sendApiRequest($url, $headers = [])
-    {
-        $url = $this->api_url.'/'.$url.'/';
+        /**
+         * I might remove this because it's just being super protective ^.^
+         */
+        $headers[2] = $this->tokens->makeAuthParam();
 
         // Working CURL Request
         $response = $this->sendCurlGetRequest($url, $headers);
@@ -269,5 +252,12 @@ class LiveCoding
         }
 
         return $response;
+    }
+
+    public function checkTokens()
+    {
+        if ($this->tokens->isStale()) {
+            $this->refreshToken();
+        }
     }
 }
