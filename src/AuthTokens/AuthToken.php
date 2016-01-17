@@ -30,7 +30,7 @@ abstract class AuthToken
      *
      * @return bool
      */
-    public function is_stale()
+    public function isStale()
     {
         return (strtotime($this->getExpiresIn()) - time()) < 7200;
     }
