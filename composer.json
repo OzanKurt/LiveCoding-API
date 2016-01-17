@@ -9,9 +9,6 @@
       "email": "ozankurt2@gmail.com"
     }
   ],
-  "require": {
-    "guzzlehttp/guzzle": "^6.1"
-  },
   "require-dev": {
     "phpunit/phpunit": "5.1.*"
   },

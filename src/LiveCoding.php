@@ -9,13 +9,6 @@ use Kurt\LiveCoding\AuthTokens\SessionAuthToken;
 class LiveCoding
 {
     /**
-     * Guzzle http client instance.
-     *
-     * @var GuzzleHttp\Client
-     */
-    protected $guzzle;
-
-    /**
      * LiveCodingTV client instance.
      *
      * @var Kurt\LiveCoding\Client
@@ -40,8 +33,6 @@ class LiveCoding
         $this->client = $client;
 
         $this->state = uniqid();
-
-        $this->initializeGuzzleClient();
 
         $this->initializeTokens();
 
@@ -76,8 +67,7 @@ class LiveCoding
 // Check the storage for existing tokens
         if ($this->tokens->isAuthorized()) {
             // Here we are authorized from a previous request
-// Nothing to do - yay
-            dd($this->livestreams());
+            // Nothing to do - yay
         } elseif (isset($_GET['state']) && $_GET['state'] == $this->tokens->getState()) {
             // Here we are returning from user auth approval link
             $this->fetchTokens($_GET['code']);
@@ -86,13 +76,6 @@ class LiveCoding
 // Save the state before displaying auth link
             $this->tokens->setState($this->state);
         }
-    }
-
-    public function initializeGuzzleClient()
-    {
-        $this->guzzle = new \GuzzleHttp\Client([
-            'verify' => false,
-        ]);
     }
 
     /**
@@ -135,16 +118,39 @@ class LiveCoding
     {
         $query['client_id'] = $this->client->getId();
 
-        $response = $this->guzzle->post($url, [
-            'auth' => [
-                $this->client->getId(),
-                $this->client->getSecret(),
-            ],
-            'query'   => $query,
-            'headers' => $headers,
-        ]);
+        try {
+            $ch = curl_init();
+            $timeout = 5;
 
-        return $response->getBody()->getContents();
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, count($query));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($query));
+
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+            $response = curl_exec($ch);
+
+            if (false === $response) {
+                throw new \Exception(curl_error($ch), curl_errno($ch));
+            }
+
+            curl_close($ch);
+        } catch (\Exception $e) {
+            trigger_error(
+                sprintf(
+                    'Curl failed with error #%d: %s', 
+                    $e->getCode(), 
+                    $e->getMessage()
+                ), 
+                E_USER_ERROR
+            );
+        }
+
+        return $response;
+
+        // return $response->getBody()->getContents();
     }
 
     /**
@@ -216,21 +222,52 @@ class LiveCoding
             $this->refreshToken();
         }
 
-        $this->sendApiRequest("livestreams", $this->api_req_params);
+        $this->api_req_params[2] = $this->tokens->makeAuthParam();
+
+        $res = $this->sendApiRequest("livestreams/", $this->api_req_params);
+
+        dd($res);
+
+        // $this->sendApiRequest("livestreams", $this->api_req_params);
     }
 
     protected function sendApiRequest($url, $headers = [])
     {
         $url = $this->api_url.'/'.$url.'/';
 
-        $headers[2] = $this->tokens->makeAuthParam();
-
-        $request = $this->guzzle->get($url, [
-            'headers' => $headers,
-        ]);
-
-        $response = $request->getBody()->getContents();
+        // Working CURL Request
+        $response = $this->sendCurlGetRequest($url, $headers);
 
         dd($response);
+    }
+
+    public function sendCurlGetRequest($url, $headers)
+    {
+        try {
+            $ch = curl_init();
+            $timeout = 5;
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_URL , $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+            $response = curl_exec($ch);
+
+            if (false === $response) {
+                throw new \Exception(curl_error($ch), curl_errno($ch));
+            }
+
+            curl_close($ch);
+        } catch (\Exception $e) {
+            trigger_error(
+                sprintf(
+                    'Curl failed with error #%d: %s', 
+                    $e->getCode(), 
+                    $e->getMessage()
+                ), 
+                E_USER_ERROR
+            );
+        }
+
+        return $response;
     }
 }
