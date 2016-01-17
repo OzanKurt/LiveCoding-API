@@ -2,9 +2,9 @@
 
 namespace Kurt\LiveCoding;
 
-use Kurt\LiveCoding\Utilities\FileManager;
 use Kurt\LiveCoding\AuthTokens\FileAuthToken;
 use Kurt\LiveCoding\AuthTokens\SessionAuthToken;
+use Kurt\LiveCoding\Utilities\FileManager;
 
 class LiveCoding
 {
@@ -142,10 +142,10 @@ class LiveCoding
         } catch (\Exception $e) {
             trigger_error(
                 sprintf(
-                    'Curl failed with error #%d: %s', 
-                    $e->getCode(), 
+                    'Curl failed with error #%d: %s',
+                    $e->getCode(),
                     $e->getMessage()
-                ), 
+                ),
                 E_USER_ERROR
             );
         }
@@ -213,7 +213,7 @@ class LiveCoding
 
         $headers = $this->api_req_params;
 
-        /**
+        /*
          * I might remove this because it's just being super protective ^.^
          */
         $headers[2] = $this->tokens->makeAuthParam();
@@ -230,7 +230,7 @@ class LiveCoding
             $ch = curl_init();
             $timeout = 5;
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($ch, CURLOPT_URL , $url);
+            curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
             $response = curl_exec($ch);
@@ -243,10 +243,10 @@ class LiveCoding
         } catch (\Exception $e) {
             trigger_error(
                 sprintf(
-                    'Curl failed with error #%d: %s', 
-                    $e->getCode(), 
+                    'Curl failed with error #%d: %s',
+                    $e->getCode(),
                     $e->getMessage()
-                ), 
+                ),
                 E_USER_ERROR
             );
         }
