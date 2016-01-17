@@ -2,6 +2,8 @@
 
 namespace Kurt\LiveCoding\AuthTokens;
 
+use Kurt\LiveCoding\Utilities\FileManager;
+
 class FileAuthToken extends AuthToken
 {
     /**
@@ -14,9 +16,9 @@ class FileAuthToken extends AuthToken
     /**
      * [__construct description].
      */
-    public function __construct()
+    public function __construct(FileManager $fileManager)
     {
-        $this->fileManager = new FileManager();
+        $this->fileManager = $fileManager;
     }
 
     /**
@@ -36,7 +38,7 @@ class FileAuthToken extends AuthToken
      */
     public function getCode()
     {
-        return $this->fileManager->get('code');
+        return $this->fileManager->exists('code') ? $this->fileManager->get('code') : null;
     }
 
     /**

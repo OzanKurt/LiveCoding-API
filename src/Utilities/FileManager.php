@@ -5,6 +5,21 @@ namespace Kurt\LiveCoding\Utilities;
 class FileManager
 {
     /**
+     * [$basePath description]
+     * @var [type]
+     */
+    protected $basePath;
+
+    /**
+     * [__construct description]
+     * 
+     * @param [type] $basePath [description]
+     */
+    public function __construct($basePath) {
+        $this->basePath = $basePath;
+    }
+
+    /**
      * [exists description].
      * 
      * @param [type] $path
@@ -13,7 +28,7 @@ class FileManager
      */
     public function exists($path)
     {
-        return file_exists($path);
+        return file_exists($this->getPathTo($path));
     }
 
     /**
@@ -25,7 +40,7 @@ class FileManager
      */
     public function get($path)
     {
-        return file_get_contents($path);
+        return file_get_contents($this->getPathTo($path));
     }
 
     /**
@@ -38,6 +53,11 @@ class FileManager
      */
     public function put($path, $value)
     {
-        file_put_contents($path, $value);
+        file_put_contents($this->getPathTo($path), $value);
+    }
+
+    public function getPathTo($path)
+    {
+        return $this->basePath.'/'.$path;
     }
 }

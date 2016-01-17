@@ -2,6 +2,10 @@
 
 namespace Kurt\LiveCoding;
 
+use Kurt\LiveCoding\Utilities\FileManager;
+use Kurt\LiveCoding\AuthTokens\FileAuthToken;
+use Kurt\LiveCoding\AuthTokens\SessionAuthToken;
+
 class LiveCoding
 {
     /**
@@ -73,7 +77,7 @@ class LiveCoding
         if ($this->tokens->isAuthorized()) {
             // Here we are authorized from a previous request
 // Nothing to do - yay
-            dd('authorized');
+            dd($this->livestreams());
         } elseif (isset($_GET['state']) && $_GET['state'] == $this->tokens->getState()) {
             // Here we are returning from user auth approval link
             $this->fetchTokens($_GET['code']);
@@ -99,9 +103,11 @@ class LiveCoding
     public function initializeTokens()
     {
         if ($this->client->usesFileStorage()) {
-            $this->tokens = new \Kurt\LiveCoding\AuthTokens\FileAuthToken();
+            $fileStorage = $this->client->getStorage();
+            $fileManager = new FileManager($fileStorage->getPath());
+            $this->tokens = new FileAuthToken($fileManager);
         } elseif ($this->client->usesSessionStorage()) {
-            $this->tokens = new \Kurt\LiveCoding\AuthTokens\SessionAuthToken();
+            $this->tokens = new SessionAuthToken();
         } else {
             throw new \Exception('Storage type is not valid.');
         }
@@ -119,6 +125,7 @@ class LiveCoding
         $this->tokens->setCode($code);
         $this->token_req_params['code'] = $code;
         $this->token_req_params['grant_type'] = 'authorization_code';
+
         $res = $this->post_url_contents($this->token_url, $this->token_req_params, $this->token_req_headers);
         // Store access tokens
         $this->tokens->storeTokens($res);
@@ -126,7 +133,9 @@ class LiveCoding
 
     private function post_url_contents($url, $query, $headers = [])
     {
-        $request = $this->guzzle->post('URL', [
+        $query['client_id'] = $this->client->getId();
+
+        $response = $this->guzzle->post($url, [
             'auth' => [
                 $this->client->getId(),
                 $this->client->getSecret(),
@@ -135,9 +144,7 @@ class LiveCoding
             'headers' => $headers,
         ]);
 
-        $response = $request->send();
-
-        dd($response);
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -148,8 +155,8 @@ class LiveCoding
         $this->token_req_params['grant_type'] = 'refresh_token';
         $this->token_req_params['refresh_token'] = $this->tokens->getRefreshToken();
         $res = $this->post_url_contents($this->token_url, $this->token_req_params, $this->token_req_headers);
-      // Store access tokens
-      $this->tokens->storeTokens($res);
+        // Store access tokens
+        $this->tokens->storeTokens($res);
     }
 
     /**
@@ -162,7 +169,7 @@ class LiveCoding
     private function sendGetRequest($data_path)
     {
         $this->api_req_params[2] = $this->tokens->makeAuthParam();
-        $res = $this->get_url_contents($this->api_url.$data_path, $this->api_req_params);
+        $res = $this->get_url_contents($this->api_url.$data_path, '', $this->api_req_params);
         $res = json_decode($res);
         if (isset($res->error)) {
             return "{ error: '$res->error' }";
@@ -194,22 +201,35 @@ class LiveCoding
 
     public function user($username = '')
     {
-        $this->sendApiRequest("users/{$username}");
+        if ($this->tokens->is_stale()) {
+            $this->refreshToken();
+        }
+        
+        $this->api_req_params[2] = $this->tokens->makeAuthParam();
+
+        $this->sendApiRequest("users/{$username}", $this->api_req_params);
+    }
+
+    public function livestreams()
+    {
+        if ($this->tokens->is_stale()) {
+            $this->refreshToken();
+        }
+
+        $this->sendApiRequest("livestreams", $this->api_req_params);
     }
 
     protected function sendApiRequest($url, $headers = [])
     {
-        $url = $this->api_url.'/'.$url;
+        $url = $this->api_url.'/'.$url.'/';
 
-        $this->guzzle->get($url, [
-            'auth' => [
-                $this->client->getId(),
-                $this->client->getSecret(),
-            ],
+        $headers[2] = $this->tokens->makeAuthParam();
+
+        $request = $this->guzzle->get($url, [
             'headers' => $headers,
         ]);
 
-        $response = $request->send();
+        $response = $request->getBody()->getContents();
 
         dd($response);
     }
