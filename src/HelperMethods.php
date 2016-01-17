@@ -18,7 +18,7 @@ trait HelperMethods
         return $this->sendApiRequest("languages/{$name}");
     }
 
-    public function livestreams($username = null)
+    public function livestreams($username = '')
     {
         $this->checkTokens();
 
