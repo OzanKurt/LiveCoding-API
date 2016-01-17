@@ -20,14 +20,16 @@ abstract class AuthToken
             $this->setAccessToken($tokens->access_token);
             $this->setTokenType($tokens->token_type);
             $this->setRefreshToken($tokens->refresh_token);
-            $this->setExpiresIn('Y-m-d H:i:s', (time() + $tokens->expires_in));
+            $this->setExpiresIn(date('Y-m-d H:i:s', (time() + $tokens->expires_in)));
             $this->setScope($tokens->scope);
         }
     }
 
     /**
      * Determine if our access token needs to be refreshed.
-     **/
+     *
+     * @return bool
+     */
     public function is_stale()
     {
         return (strtotime($this->getExpiresIn()) - time()) < 7200;
