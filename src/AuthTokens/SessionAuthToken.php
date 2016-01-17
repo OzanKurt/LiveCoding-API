@@ -125,7 +125,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description].
+     * [getRefreshToken description].
      * 
      * @return [type] [description]
      */
@@ -135,7 +135,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description].
+     * [setRefreshToken description].
      * 
      * @return [type] [description]
      */
@@ -145,7 +145,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description].
+     * [getExpiresIn description].
      * 
      * @return [type] [description]
      */
@@ -155,7 +155,7 @@ class SessionAuthToken extends AuthToken
     }
 
     /**
-     * [getAccessToken description].
+     * [setExpiresIn description].
      * 
      * @return [type] [description]
      */
