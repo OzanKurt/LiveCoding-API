@@ -5,17 +5,19 @@ namespace Kurt\LiveCoding\Utilities;
 class FileManager
 {
     /**
-     * [$basePath description]
+     * [$basePath description].
+     *
      * @var [type]
      */
     protected $basePath;
 
     /**
-     * [__construct description]
+     * [__construct description].
      * 
      * @param [type] $basePath [description]
      */
-    public function __construct($basePath) {
+    public function __construct($basePath)
+    {
         $this->basePath = $basePath;
     }
 
