@@ -133,6 +133,7 @@ class FileAuthToken extends AuthToken
      * [getAccessToken description].
      * 
      * @param [type] $accessToken
+     *
      * @return void
      */
     public function setAccessToken($accessToken)
@@ -154,6 +155,7 @@ class FileAuthToken extends AuthToken
      * [getAccessToken description].
      *
      * @param [type] $refreshToken
+     *
      * @return void
      */
     public function setRefreshToken($refreshToken)
@@ -175,6 +177,7 @@ class FileAuthToken extends AuthToken
      * [getAccessToken description].
      *
      * @param [type] $expiresIn
+     *
      * @return void
      */
     public function setExpiresIn($expiresIn)

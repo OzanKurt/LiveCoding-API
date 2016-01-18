@@ -246,8 +246,9 @@ class LiveCoding
     /**
      * [sendApiRequest description].
      * 
-     * @param  string $url
-     * @return Object
+     * @param string $url
+     *
+     * @return object
      */
     protected function sendApiRequest($url)
     {
@@ -268,8 +269,9 @@ class LiveCoding
     /**
      * [sendCurlGetRequest description].
      * 
-     * @param  string $url
-     * @param  array $headers
+     * @param string $url
+     * @param array  $headers
+     *
      * @return string
      */
     public function sendCurlGetRequest($url, $headers = [])
@@ -313,5 +315,4 @@ class LiveCoding
             $this->refreshToken();
         }
     }
-
 }
