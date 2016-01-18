@@ -45,6 +45,7 @@ class FileAuthToken extends AuthToken
      * [setCode description].
      * 
      * @param [type] $code
+     *
      * @return void
      */
     public function setCode($code)
@@ -66,6 +67,7 @@ class FileAuthToken extends AuthToken
      * [setState description].
      * 
      * @param [type] $state
+     *
      * @return void
      */
     public function setState($state)
@@ -87,6 +89,7 @@ class FileAuthToken extends AuthToken
      * [setScope description].
      * 
      * @param [type] $scope
+     *
      * @return void
      */
     public function setScope($scope)
@@ -108,6 +111,7 @@ class FileAuthToken extends AuthToken
      * [setTokenType description].
      * 
      * @param [type] $tokenType
+     *
      * @return void
      */
     public function setTokenType($tokenType)

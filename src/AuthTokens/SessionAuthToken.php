@@ -39,6 +39,7 @@ class SessionAuthToken extends AuthToken
      * [setCode description].
      * 
      * @param [type] $code
+     *
      * @return void
      */
     public function setCode($code)
@@ -60,6 +61,7 @@ class SessionAuthToken extends AuthToken
      * [setState description].
      * 
      * @param [type] $state
+     *
      * @return void
      */
     public function setState($state)
@@ -81,6 +83,7 @@ class SessionAuthToken extends AuthToken
      * [setScope description].
      * 
      * @param [type] $scope
+     *
      * @return void
      */
     public function setScope($scope)
@@ -102,6 +105,7 @@ class SessionAuthToken extends AuthToken
      * [setTokenType description].
      * 
      * @param [type] $token_type
+     *
      * @return void
      */
     public function setTokenType($tokenType)
@@ -122,7 +126,8 @@ class SessionAuthToken extends AuthToken
     /**
      * [getAccessToken description].
      *
-     * @param  [type] $accessToken
+     * @param [type] $accessToken
+     *
      * @return void
      */
     public function setAccessToken($accessToken)
@@ -144,6 +149,7 @@ class SessionAuthToken extends AuthToken
      * [setRefreshToken description].
      *
      * @param [type] $refreshToken
+     *
      * @return void
      */
     public function setRefreshToken($refreshToken)
@@ -165,6 +171,7 @@ class SessionAuthToken extends AuthToken
      * [setExpiresIn description].
      *
      * @param [type] $expiresIn
+     *
      * @return void
      */
     public function setExpiresIn($expiresIn)
