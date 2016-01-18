@@ -28,16 +28,14 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
         if (!$this->liveCoding->isAuthorized()) {
             $this->assertContains(
-                $this->client->getId(), 
+                $this->client->getId(),
                 $authLink
             );
 
             $this->assertContains(
-                urlencode($this->client->getRedirectUrl()), 
+                urlencode($this->client->getRedirectUrl()),
                 $authLink
             );
         }
     }
-
-    
 }
