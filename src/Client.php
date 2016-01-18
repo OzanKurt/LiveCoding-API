@@ -119,8 +119,8 @@ class Client
             'id'          => '',
             'secret'      => '',
             'redirectUrl' => '',
-            'scope'       => new ReadScope(),
-            'storage'     => new SessionStorage(),
+            'scope'       => new ReadScope,
+            'storage'     => new SessionStorage,
         ];
     }
 
@@ -165,26 +165,6 @@ class Client
     private function throwExceptionFor($key)
     {
         throw new $this->exceptions[$key]();
-    }
-
-    /**
-     * [usesSessionStorage description].
-     * 
-     * @return bool
-     */
-    public function usesSessionStorage()
-    {
-        return $this->getStorage() instanceof SessionStorage;
-    }
-
-    /**
-     * [usesTextStorage description].
-     * 
-     * @return bool
-     */
-    public function usesFileStorage()
-    {
-        return $this->getStorage() instanceof FileStorage;
     }
 
     /**

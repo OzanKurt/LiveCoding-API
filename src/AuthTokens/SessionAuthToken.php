@@ -9,6 +9,7 @@ class SessionAuthToken extends AuthToken
      */
     public function __construct()
     {
+        // Todo: Check if we can replace global variable with `filter_input(INPUT_SESSION, 'key')`.
         if (!isset($_SESSION)) {
             session_start();
         }
