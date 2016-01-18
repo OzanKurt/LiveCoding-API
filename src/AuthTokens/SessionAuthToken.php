@@ -39,6 +39,7 @@ class SessionAuthToken extends AuthToken
      * [setCode description].
      * 
      * @param [type] $code
+     * @return void
      */
     public function setCode($code)
     {
@@ -48,7 +49,7 @@ class SessionAuthToken extends AuthToken
     /**
      * [getState description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getState()
     {
@@ -58,7 +59,8 @@ class SessionAuthToken extends AuthToken
     /**
      * [setState description].
      * 
-     * @param [type] $state [description]
+     * @param [type] $state
+     * @return void
      */
     public function setState($state)
     {
@@ -68,7 +70,7 @@ class SessionAuthToken extends AuthToken
     /**
      * [getScope description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getScope()
     {
@@ -78,7 +80,8 @@ class SessionAuthToken extends AuthToken
     /**
      * [setScope description].
      * 
-     * @param [type] $scope [description]
+     * @param [type] $scope
+     * @return void
      */
     public function setScope($scope)
     {
@@ -88,7 +91,7 @@ class SessionAuthToken extends AuthToken
     /**
      * [getTokenType description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getTokenType()
     {
@@ -98,17 +101,18 @@ class SessionAuthToken extends AuthToken
     /**
      * [setTokenType description].
      * 
-     * @param [type] $token_type [description]
+     * @param [type] $token_type
+     * @return void
      */
-    public function setTokenType($token_type)
+    public function setTokenType($tokenType)
     {
-        $_SESSION['token_type'] = $token_type;
+        $_SESSION['token_type'] = $tokenType;
     }
 
     /**
      * [getAccessToken description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getAccessToken()
     {
@@ -117,18 +121,19 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [getAccessToken description].
-     * 
-     * @return [type] [description]
+     *
+     * @param  [type] $accessToken
+     * @return void
      */
-    public function setAccessToken($access_token)
+    public function setAccessToken($accessToken)
     {
-        $_SESSION['access_token'] = $access_token;
+        $_SESSION['access_token'] = $accessToken;
     }
 
     /**
      * [getRefreshToken description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getRefreshToken()
     {
@@ -137,18 +142,19 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [setRefreshToken description].
-     * 
-     * @return [type] [description]
+     *
+     * @param [type] $refreshToken
+     * @return void
      */
-    public function setRefreshToken($refresh_token)
+    public function setRefreshToken($refreshToken)
     {
-        $_SESSION['refresh_token'] = $refresh_token;
+        $_SESSION['refresh_token'] = $refreshToken;
     }
 
     /**
      * [getExpiresIn description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getExpiresIn()
     {
@@ -157,11 +163,12 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [setExpiresIn description].
-     * 
-     * @return [type] [description]
+     *
+     * @param [type] $expiresIn
+     * @return void
      */
-    public function setExpiresIn($expires_in)
+    public function setExpiresIn($expiresIn)
     {
-        $_SESSION['expires_in'] = $expires_in;
+        $_SESSION['expires_in'] = $expiresIn;
     }
 }

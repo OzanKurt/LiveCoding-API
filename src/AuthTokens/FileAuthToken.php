@@ -45,6 +45,7 @@ class FileAuthToken extends AuthToken
      * [setCode description].
      * 
      * @param [type] $code
+     * @return void
      */
     public function setCode($code)
     {
@@ -54,7 +55,7 @@ class FileAuthToken extends AuthToken
     /**
      * [getState description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getState()
     {
@@ -64,7 +65,8 @@ class FileAuthToken extends AuthToken
     /**
      * [setState description].
      * 
-     * @param [type] $state [description]
+     * @param [type] $state
+     * @return void
      */
     public function setState($state)
     {
@@ -74,7 +76,7 @@ class FileAuthToken extends AuthToken
     /**
      * [getScope description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getScope()
     {
@@ -84,7 +86,8 @@ class FileAuthToken extends AuthToken
     /**
      * [setScope description].
      * 
-     * @param [type] $scope [description]
+     * @param [type] $scope
+     * @return void
      */
     public function setScope($scope)
     {
@@ -94,27 +97,28 @@ class FileAuthToken extends AuthToken
     /**
      * [getTokenType description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getTokenType()
     {
-        return $this->fileManager->get('token_type');
+        return $this->fileManager->get('tokenType');
     }
 
     /**
      * [setTokenType description].
      * 
-     * @param [type] $token_type [description]
+     * @param [type] $tokenType
+     * @return void
      */
-    public function setTokenType($token_type)
+    public function setTokenType($tokenType)
     {
-        $this->fileManager->put('token_type', $token_type);
+        $this->fileManager->put('tokenType', $tokenType);
     }
 
     /**
      * [getAccessToken description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getAccessToken()
     {
@@ -124,7 +128,8 @@ class FileAuthToken extends AuthToken
     /**
      * [getAccessToken description].
      * 
-     * @return [type] [description]
+     * @return [type]
+     * @return void
      */
     public function setAccessToken($access_token)
     {
@@ -134,7 +139,7 @@ class FileAuthToken extends AuthToken
     /**
      * [getAccessToken description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getRefreshToken()
     {
@@ -144,7 +149,8 @@ class FileAuthToken extends AuthToken
     /**
      * [getAccessToken description].
      * 
-     * @return [type] [description]
+     * @return [type]
+     * @return void
      */
     public function setRefreshToken($refresh_token)
     {
@@ -154,7 +160,7 @@ class FileAuthToken extends AuthToken
     /**
      * [getAccessToken description].
      * 
-     * @return [type] [description]
+     * @return [type]
      */
     public function getExpiresIn()
     {
@@ -164,7 +170,8 @@ class FileAuthToken extends AuthToken
     /**
      * [getAccessToken description].
      * 
-     * @return [type] [description]
+     * @return [type]
+     * @return void
      */
     public function setExpiresIn($expires_in)
     {
