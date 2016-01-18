@@ -132,12 +132,12 @@ class FileAuthToken extends AuthToken
     /**
      * [getAccessToken description].
      * 
-     * @return [type]
+     * @param [type] $accessToken
      * @return void
      */
-    public function setAccessToken($access_token)
+    public function setAccessToken($accessToken)
     {
-        $this->fileManager->put('access_token', $access_token);
+        $this->fileManager->put('access_token', $accessToken);
     }
 
     /**
@@ -152,13 +152,13 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getAccessToken description].
-     * 
-     * @return [type]
+     *
+     * @param [type] $refreshToken
      * @return void
      */
-    public function setRefreshToken($refresh_token)
+    public function setRefreshToken($refreshToken)
     {
-        $this->fileManager->put('refresh_token', $refresh_token);
+        $this->fileManager->put('refresh_token', $refreshToken);
     }
 
     /**
@@ -173,12 +173,12 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getAccessToken description].
-     * 
-     * @return [type]
+     *
+     * @param [type] $expiresIn
      * @return void
      */
-    public function setExpiresIn($expires_in)
+    public function setExpiresIn($expiresIn)
     {
-        $this->fileManager->put('expires_in', $expires_in);
+        $this->fileManager->put('expires_in', $expiresIn);
     }
 }

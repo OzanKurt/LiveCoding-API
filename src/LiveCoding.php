@@ -166,12 +166,12 @@ class LiveCoding
         $this->tokenRequiredParams['code'] = $code;
         $this->tokenRequiredParams['grant_type'] = 'authorization_code';
 
-        $res = $this->post_url_contents($this->tokenUrl, $this->tokenRequiredParams, $this->tokenRequiredHeaders);
+        $res = $this->postUrlContents($this->tokenUrl, $this->tokenRequiredParams, $this->tokenRequiredHeaders);
         // Store access tokens
         $this->authToken->storeTokens($res);
     }
 
-    private function post_url_contents($url, $query, $headers = [])
+    private function postUrlContents($url, $query, $headers = [])
     {
         $query['client_id'] = $this->client->getId();
 
@@ -217,28 +217,9 @@ class LiveCoding
     {
         $this->tokenRequiredParams['grant_type'] = 'refresh_token';
         $this->tokenRequiredParams['refresh_token'] = $this->authToken->getRefreshToken();
-        $response = $this->post_url_contents($this->tokenUrl, $this->tokenRequiredParams, $this->tokenRequiredHeaders);
+        $response = $this->postUrlContents($this->tokenUrl, $this->tokenRequiredParams, $this->tokenRequiredHeaders);
         // Store access tokens
         $this->authToken->storeTokens($response);
-    }
-
-    /**
-     * Request API data.
-     *
-     * @param string $data_path - The data to get e.g. 'livestreams/channelname/'
-     *
-     * @return string - The requested data as JSON string or error message
-     */
-    private function sendGetRequest($data_path)
-    {
-        $this->apiRequiredParams[2] = $this->authToken->makeAuthParam();
-        $response = $this->get_url_contents($this->apiUrl.$data_path, '', $this->apiRequiredParams);
-        $response = json_decode($response);
-        if (isset($response->error)) {
-            return "{ error: '$response->error' }";
-        } else {
-            return $response;
-        }
     }
 
     /**
@@ -247,7 +228,7 @@ class LiveCoding
      * @return bool - Returns TRUE if the app is ready to make requests,
      *              or FALSE if user authorization is required
      */
-    public function getIsAuthorized()
+    public function isAuthorized()
     {
         return $this->authToken->isAuthorized();
     }
@@ -262,6 +243,12 @@ class LiveCoding
         return $this->authLink;
     }
 
+    /**
+     * [sendApiRequest description].
+     * 
+     * @param  string $url
+     * @return Object
+     */
     protected function sendApiRequest($url)
     {
         $url = trim($this->apiUrl.'/'.$url, '/').'/';
@@ -278,7 +265,14 @@ class LiveCoding
         return json_decode($response);
     }
 
-    public function sendCurlGetRequest($url, $headers)
+    /**
+     * [sendCurlGetRequest description].
+     * 
+     * @param  string $url
+     * @param  array $headers
+     * @return string
+     */
+    public function sendCurlGetRequest($url, $headers = [])
     {
         try {
             $curl = curl_init();
@@ -308,10 +302,16 @@ class LiveCoding
         return $response;
     }
 
+    /**
+     * [checkTokens description].
+     * 
+     * @return void
+     */
     public function checkTokens()
     {
         if ($this->authToken->isStale()) {
             $this->refreshToken();
         }
     }
+
 }

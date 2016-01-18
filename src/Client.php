@@ -98,7 +98,7 @@ class Client
 
         $defaultKeys = array_keys($defaults);
 
-        foreach ($credentials as $key => $value) {
+        foreach (array_keys($credentials) as $key) {
             if (!in_array($key, $defaultKeys)) {
                 unset($credentials[$key]);
             }
