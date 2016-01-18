@@ -217,9 +217,9 @@ class LiveCoding
     {
         $this->tokenRequiredParams['grant_type'] = 'refresh_token';
         $this->tokenRequiredParams['refresh_token'] = $this->authToken->getRefreshToken();
-        $res = $this->post_url_contents($this->tokenUrl, $this->tokenRequiredParams, $this->tokenRequiredHeaders);
+        $response = $this->post_url_contents($this->tokenUrl, $this->tokenRequiredParams, $this->tokenRequiredHeaders);
         // Store access tokens
-        $this->authToken->storeTokens($res);
+        $this->authToken->storeTokens($response);
     }
 
     /**
@@ -232,12 +232,12 @@ class LiveCoding
     private function sendGetRequest($data_path)
     {
         $this->apiRequiredParams[2] = $this->authToken->makeAuthParam();
-        $res = $this->get_url_contents($this->apiUrl.$data_path, '', $this->apiRequiredParams);
-        $res = json_decode($res);
-        if (isset($res->error)) {
-            return "{ error: '$res->error' }";
+        $response = $this->get_url_contents($this->apiUrl.$data_path, '', $this->apiRequiredParams);
+        $response = json_decode($response);
+        if (isset($response->error)) {
+            return "{ error: '$response->error' }";
         } else {
-            return $res;
+            return $response;
         }
     }
 
@@ -273,10 +273,9 @@ class LiveCoding
          */
         $headers[2] = $this->authToken->makeAuthParam();
 
-        // Working CURL Request
         $response = $this->sendCurlGetRequest($url, $headers);
 
-        dd($response);
+        return json_decode($response);
     }
 
     public function sendCurlGetRequest($url, $headers)
