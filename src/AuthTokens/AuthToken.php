@@ -17,10 +17,10 @@ abstract class AuthToken
         $tokens = json_decode($tokens);
 
         if (!isset($tokens->error)) {
-            $this->setAccessToken($tokens->access_token);
-            $this->setTokenType($tokens->token_type);
-            $this->setRefreshToken($tokens->refresh_token);
-            $this->setExpiresIn(date('Y-m-d H:i:s', (time() + $tokens->expires_in)));
+            $this->setAccessToken($tokens->accessToken);
+            $this->setTokenType($tokens->tokenType);
+            $this->setRefreshToken($tokens->refreshToken);
+            $this->setExpiresIn(date('Y-m-d H:i:s', (time() + $tokens->expiresIn)));
             $this->setScope($tokens->scope);
         }
     }
@@ -94,7 +94,7 @@ abstract class AuthToken
      * 
      * @return [type] [description]
      */
-    abstract public function setAccessToken($access_token);
+    abstract public function setAccessToken($accessToken);
 
     /**
      * [getTokenType description].
@@ -108,7 +108,7 @@ abstract class AuthToken
      * 
      * @return [type] [description]
      */
-    abstract public function setTokenType($token_type);
+    abstract public function setTokenType($tokenType);
 
     /**
      * [getRefreshToken description].
@@ -122,7 +122,7 @@ abstract class AuthToken
      * 
      * @return [type] [description]
      */
-    abstract public function setRefreshToken($refresh_token);
+    abstract public function setRefreshToken($refreshToken);
 
     /**
      * [getExpiresIn description].
@@ -136,7 +136,7 @@ abstract class AuthToken
      * 
      * @return [type] [description]
      */
-    abstract public function setExpiresIn($expires_in);
+    abstract public function setExpiresIn($expiresIn);
 
     /**
      * [getScope description].
