@@ -32,12 +32,12 @@ abstract class Storage
      * 
      * @return void
      */
-    protected abstract function initializeAuthToken();
+    abstract protected function initializeAuthToken();
 
     /**
      * [isFileStorage description].
      * 
-     * @return boolean
+     * @return bool
      */
     public function isFileStorage()
     {
@@ -47,11 +47,10 @@ abstract class Storage
     /**
      * [isSessionStorage description].
      * 
-     * @return boolean
+     * @return bool
      */
     public function isSessionStorage()
     {
         return $this instanceof SessionStorage;
     }
-
 }

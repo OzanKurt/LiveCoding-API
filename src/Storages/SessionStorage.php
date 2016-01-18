@@ -21,6 +21,6 @@ class SessionStorage extends Storage
      */
     protected function initializeAuthToken()
     {
-        $this->authToken = new SessionAuthToken;
+        $this->authToken = new SessionAuthToken();
     }
 }

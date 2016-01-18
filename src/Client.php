@@ -4,7 +4,6 @@ namespace Kurt\LiveCoding;
 
 use Kurt\LiveCoding\Scopes\ReadScope;
 use Kurt\LiveCoding\Scopes\Scope;
-use Kurt\LiveCoding\Storages\FileStorage;
 use Kurt\LiveCoding\Storages\SessionStorage;
 use Kurt\LiveCoding\Storages\Storage;
 
@@ -119,8 +118,8 @@ class Client
             'id'          => '',
             'secret'      => '',
             'redirectUrl' => '',
-            'scope'       => new ReadScope,
-            'storage'     => new SessionStorage,
+            'scope'       => new ReadScope(),
+            'storage'     => new SessionStorage(),
         ];
     }
 

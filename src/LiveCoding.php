@@ -18,7 +18,7 @@ class LiveCoding
     protected $client;
 
     /**
-     * [$state description]
+     * [$state description].
      * 
      * @var string
      */
@@ -32,7 +32,7 @@ class LiveCoding
     protected $authLink;
 
     /**
-     * [$authToken description]
+     * [$authToken description].
      * 
      * @var Kurt\LiveCoding\AuthTokens\AuthToken
      */

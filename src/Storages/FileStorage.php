@@ -24,8 +24,9 @@ class FileStorage extends Storage
     /**
      * Initialize FileManager for AuthToken instance.
      * 
-     * @return void
      * @throws InvalidPathException
+     *
+     * @return void
      */
     private function initializeFileManager($path)
     {
