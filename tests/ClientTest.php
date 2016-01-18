@@ -8,17 +8,18 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        @session_start();
+
         $this->client = new Client([
-            'id'          => '12631243816253178',
-            'secret'      => '123465129834629',
+            'id'          => '5844713178',
+            'secret'      => '88481424978152416071',
             'redirectUrl' => 'http://localhost:8000/index.php',
-            'scope'       => new Kurt\LiveCoding\Scopes\ReadScope(),
         ]);
     }
 
     /** @test */
     public function it_does_something()
     {
-        $this->assertTrue(true);
+        //
     }
 }
