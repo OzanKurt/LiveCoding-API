@@ -5,6 +5,7 @@
 [![License](https://poser.pugx.org/ozankurt/livecoding-api/license)](https://packagist.org/packages/ozankurt/livecoding-api)
 [![Total Downloads](https://poser.pugx.org/ozankurt/livecoding-api/downloads)](https://packagist.org/packages/ozankurt/livecoding-api) 
 [![Travis-CI](https://api.travis-ci.org/OzanKurt/LiveCoding-API.svg)](https://travis-ci.org/OzanKurt/LiveCoding-API)
+[![Code Climate](https://codeclimate.com/github/OzanKurt/LiveCoding-API/badges/gpa.svg)](https://codeclimate.com/github/OzanKurt/LiveCoding-API)
 
 This package was built on Wapaca's [livecoding-auth](https://github.com/Wapaca/livecoding-auth/). 
 
