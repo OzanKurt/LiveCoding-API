@@ -2,7 +2,7 @@
 
 namespace Kurt\LiveCoding;
 
-use Kurt\LiveCoding\Utilities\CurlRequest;
+use Kurt\LiveCoding\Utilities\Curl\Request as CurlRequest;
 
 /**
  * Class LiveCoding

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kurt\LiveCoding\Utilities;
+namespace Kurt\LiveCoding\Utilities\Curl;
 
-class CurlResponse
+class Response
 {
 
     /**

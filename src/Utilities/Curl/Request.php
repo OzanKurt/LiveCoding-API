@@ -1,8 +1,8 @@
 <?php
 
-namespace Kurt\LiveCoding\Utilities;
+namespace Kurt\LiveCoding\Utilities\Curl;
 
-class CurlRequest
+class Request
 {
     /**
      * Default cURL timeout.
@@ -39,13 +39,13 @@ class CurlRequest
     /**
      * [execute description].
      *
-     * @return mixed
+     * @return \Kurt\LiveCoding\Utilities\Curl\Response
      */
     public function execute()
     {
         $response = curl_exec($this->curlHandler);
 
-        return new CurlResponse($response);
+        return new Response($response);
     }
 
     /**
