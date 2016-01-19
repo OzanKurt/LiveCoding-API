@@ -3,11 +3,28 @@
 use Kurt\LiveCoding\Client;
 use Kurt\LiveCoding\LiveCoding;
 
+/**
+ * Class ClientTest
+ */
 class ClientTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * Client instance.
+     *
+     * @var Client
+     */
     protected $client;
+
+    /**
+     * LiveCoding instance.
+     *
+     * @var LiveCoding
+     */
     protected $liveCoding;
 
+    /**
+     * Start the session and instantiate variables.
+     */
     public function setUp()
     {
         @session_start();

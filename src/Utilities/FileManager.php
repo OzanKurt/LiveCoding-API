@@ -13,7 +13,7 @@ class FileManager
 
     /**
      * [__construct description].
-     * 
+     *
      * @param [type] $basePath [description]
      */
     public function __construct($basePath)
@@ -23,7 +23,7 @@ class FileManager
 
     /**
      * [exists description].
-     * 
+     *
      * @param [type] $path
      *
      * @return bool
@@ -35,8 +35,8 @@ class FileManager
 
     /**
      * [get description].
-     * 
-     * @param [type] $path
+     *
+     * @param  [type] $path
      *
      * @return [type]
      */
@@ -47,9 +47,9 @@ class FileManager
 
     /**
      * [put description].
-     * 
-     * @param [type] $path
-     * @param [type] $value
+     *
+     * @param  [type] $path
+     * @param  [type] $value
      *
      * @return [type]
      */

@@ -4,6 +4,10 @@ namespace Kurt\LiveCoding\Storages;
 
 use Kurt\LiveCoding\AuthTokens\SessionAuthToken;
 
+/**
+ * Class SessionStorage
+ * @package Kurt\LiveCoding\Storages
+ */
 class SessionStorage extends Storage
 {
     /**
@@ -16,7 +20,7 @@ class SessionStorage extends Storage
 
     /**
      * Initialize AuthToken instance related to the storage.
-     * 
+     *
      * @return void
      */
     protected function initializeAuthToken()

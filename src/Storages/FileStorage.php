@@ -5,13 +5,17 @@ namespace Kurt\LiveCoding\Storages;
 use Kurt\LiveCoding\AuthTokens\FileAuthToken;
 use Kurt\LiveCoding\Exceptions\InvalidPathException;
 
+/**
+ * Class FileStorage
+ * @package Kurt\LiveCoding\Storages
+ */
 class FileStorage extends Storage
 {
     protected $fileManager;
 
     /**
      * [__construct description].
-     * 
+     *
      * @param string $path
      */
     public function __construct($path = null)
@@ -23,7 +27,7 @@ class FileStorage extends Storage
 
     /**
      * Initialize FileManager for AuthToken instance.
-     * 
+     *
      * @throws InvalidPathException
      *
      * @return void
@@ -39,7 +43,7 @@ class FileStorage extends Storage
 
     /**
      * Initialize AuthToken instance related to the storage.
-     * 
+     *
      * @return void
      */
     protected function initializeAuthToken()
