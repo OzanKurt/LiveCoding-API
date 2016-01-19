@@ -2,11 +2,20 @@
 
 namespace Kurt\LiveCoding;
 
+use Kurt\LiveCoding\Exceptions\InvalidClientIdException;
+use Kurt\LiveCoding\Exceptions\InvalidClientSecretException;
+use Kurt\LiveCoding\Exceptions\InvalidRedirectUrlException;
+use Kurt\LiveCoding\Exceptions\InvalidScopeException;
+use Kurt\LiveCoding\Exceptions\InvalidStorageException;
 use Kurt\LiveCoding\Scopes\ReadScope;
 use Kurt\LiveCoding\Scopes\Scope;
 use Kurt\LiveCoding\Storages\SessionStorage;
 use Kurt\LiveCoding\Storages\Storage;
 
+/**
+ * Class Client
+ * @package Kurt\LiveCoding
+ */
 class Client
 {
     /**
@@ -33,14 +42,14 @@ class Client
     /**
      * Scope instance.
      *
-     * @var Kurt\LiveCoding\Scopes\Scope
+     * @var \Kurt\LiveCoding\Scopes\Scope
      */
     protected $scope;
 
     /**
      * Storage instance.
      *
-     * @var Kurt\LiveCoding\Storages\Storage
+     * @var \Kurt\LiveCoding\Storages\Storage
      */
     protected $storage;
 
@@ -50,16 +59,16 @@ class Client
      * @var \Exception
      */
     protected $exceptions = [
-        'id'             => \Kurt\LiveCoding\Exceptions\InvalidClientIdException::class,
-        'secret'         => \Kurt\LiveCoding\Exceptions\InvalidClientSecretException::class,
-        'redirectUrl'    => \Kurt\LiveCoding\Exceptions\InvalidRedirectUrlException::class,
-        'scope'          => \Kurt\LiveCoding\Exceptions\InvalidScopeException::class,
-        'storage'        => \Kurt\LiveCoding\Exceptions\InvalidStorageException::class,
+        'id'          => InvalidClientIdException::class,
+        'secret'      => InvalidClientSecretException::class,
+        'redirectUrl' => InvalidRedirectUrlException::class,
+        'scope'       => InvalidScopeException::class,
+        'storage'     => InvalidStorageException::class,
     ];
 
     /**
      * [__construct description].
-     * 
+     *
      * @param array $credentials
      */
     public function __construct($credentials)
@@ -69,7 +78,7 @@ class Client
 
     /**
      * [initializeCredentials description].
-     * 
+     *
      * @param array $credentials
      *
      * @return void
@@ -87,7 +96,7 @@ class Client
 
     /**
      * [mergeWithDefaults description].
-     * 
+     *
      * @param array $credentials
      *
      * @return array
@@ -109,7 +118,7 @@ class Client
 
     /**
      * [getDefaults description].
-     * 
+     *
      * @return array
      */
     private function getDefaults()
@@ -125,7 +134,7 @@ class Client
 
     /**
      * [checkCredential description].
-     * 
+     *
      * @param array $credential
      *
      * @return void
@@ -154,7 +163,7 @@ class Client
 
     /**
      * [throwExceptionFor description].
-     * 
+     *
      * @param string $key
      *
      * @throws \Exception
@@ -168,7 +177,7 @@ class Client
 
     /**
      * [getId description].
-     * 
+     *
      * @return string
      */
     public function getId()
@@ -178,8 +187,8 @@ class Client
 
     /**
      * [getSecret description].
-     * 
-     * @return Secret
+     *
+     * @return string
      */
     public function getSecret()
     {
@@ -188,7 +197,7 @@ class Client
 
     /**
      * [getRedirectUrl description].
-     * 
+     *
      * @return string
      */
     public function getRedirectUrl()
@@ -198,7 +207,7 @@ class Client
 
     /**
      * [getScope description].
-     * 
+     *
      * @return Scope
      */
     public function getScope()
@@ -208,7 +217,7 @@ class Client
 
     /**
      * [getStorage description].
-     * 
+     *
      * @return Storage
      */
     public function getStorage()

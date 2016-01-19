@@ -2,6 +2,12 @@
 
 namespace Kurt\LiveCoding\AuthTokens;
 
+/**
+ * Class SessionAuthToken
+ * @package Kurt\LiveCoding\AuthTokens
+ *
+ * Todo: Check if we can replace global variable with `filter_input(INPUT_SESSION, 'key')`.
+ */
 class SessionAuthToken extends AuthToken
 {
     /**
@@ -9,15 +15,14 @@ class SessionAuthToken extends AuthToken
      */
     public function __construct()
     {
-        // Todo: Check if we can replace global variable with `filter_input(INPUT_SESSION, 'key')`.
-        if (!isset($_SESSION)) {
+        if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
     }
 
     /**
      * [isAuthorized description].
-     * 
+     *
      * @return bool
      */
     public function isAuthorized()
@@ -27,7 +32,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [getCode description].
-     * 
+     *
      * @return [type]
      */
     public function getCode()
@@ -37,7 +42,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [setCode description].
-     * 
+     *
      * @param [type] $code
      *
      * @return void
@@ -49,7 +54,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [getState description].
-     * 
+     *
      * @return [type]
      */
     public function getState()
@@ -59,7 +64,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [setState description].
-     * 
+     *
      * @param [type] $state
      *
      * @return void
@@ -71,7 +76,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [getScope description].
-     * 
+     *
      * @return [type]
      */
     public function getScope()
@@ -81,7 +86,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [setScope description].
-     * 
+     *
      * @param [type] $scope
      *
      * @return void
@@ -93,7 +98,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [getTokenType description].
-     * 
+     *
      * @return [type]
      */
     public function getTokenType()
@@ -103,7 +108,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [setTokenType description].
-     * 
+     *
      * @param [type] $token_type
      *
      * @return void
@@ -115,7 +120,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [getAccessToken description].
-     * 
+     *
      * @return [type]
      */
     public function getAccessToken()
@@ -137,7 +142,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [getRefreshToken description].
-     * 
+     *
      * @return [type]
      */
     public function getRefreshToken()
@@ -159,7 +164,7 @@ class SessionAuthToken extends AuthToken
 
     /**
      * [getExpiresIn description].
-     * 
+     *
      * @return [type]
      */
     public function getExpiresIn()

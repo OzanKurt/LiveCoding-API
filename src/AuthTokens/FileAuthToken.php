@@ -4,17 +4,23 @@ namespace Kurt\LiveCoding\AuthTokens;
 
 use Kurt\LiveCoding\Utilities\FileManager;
 
+/**
+ * Class FileAuthToken
+ * @package Kurt\LiveCoding\AuthTokens
+ */
 class FileAuthToken extends AuthToken
 {
     /**
      * [$fileManager description].
-     * 
+     *
      * @var [type]
      */
     protected $fileManager;
 
     /**
      * [__construct description].
+     *
+     * @param \Kurt\LiveCoding\Utilities\FileManager $fileManager
      */
     public function __construct(FileManager $fileManager)
     {
@@ -23,7 +29,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [isAuthorized description].
-     * 
+     *
      * @return bool
      */
     public function isAuthorized()
@@ -33,7 +39,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getCode description].
-     * 
+     *
      * @return [type]
      */
     public function getCode()
@@ -43,7 +49,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [setCode description].
-     * 
+     *
      * @param [type] $code
      *
      * @return void
@@ -55,7 +61,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getState description].
-     * 
+     *
      * @return [type]
      */
     public function getState()
@@ -65,7 +71,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [setState description].
-     * 
+     *
      * @param [type] $state
      *
      * @return void
@@ -77,7 +83,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getScope description].
-     * 
+     *
      * @return [type]
      */
     public function getScope()
@@ -87,7 +93,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [setScope description].
-     * 
+     *
      * @param [type] $scope
      *
      * @return void
@@ -99,7 +105,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getTokenType description].
-     * 
+     *
      * @return [type]
      */
     public function getTokenType()
@@ -109,7 +115,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [setTokenType description].
-     * 
+     *
      * @param [type] $tokenType
      *
      * @return void
@@ -121,7 +127,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getAccessToken description].
-     * 
+     *
      * @return [type]
      */
     public function getAccessToken()
@@ -131,7 +137,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getAccessToken description].
-     * 
+     *
      * @param [type] $accessToken
      *
      * @return void
@@ -143,7 +149,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getAccessToken description].
-     * 
+     *
      * @return [type]
      */
     public function getRefreshToken()
@@ -165,7 +171,7 @@ class FileAuthToken extends AuthToken
 
     /**
      * [getAccessToken description].
-     * 
+     *
      * @return [type]
      */
     public function getExpiresIn()
