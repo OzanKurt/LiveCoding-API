@@ -110,7 +110,7 @@ class FileAuthToken extends AuthToken
      */
     public function getTokenType()
     {
-        return $this->fileManager->get('tokenType');
+        return $this->fileManager->get('token_type');
     }
 
     /**
@@ -122,7 +122,7 @@ class FileAuthToken extends AuthToken
      */
     public function setTokenType($tokenType)
     {
-        $this->fileManager->put('tokenType', $tokenType);
+        $this->fileManager->put('token_type', $tokenType);
     }
 
     /**
