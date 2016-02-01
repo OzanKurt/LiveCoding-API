@@ -5,10 +5,10 @@
     "license": "MIT",
     "authors": [
         {
+            "role": "Owner",
             "name": "Ozan Kurt",
             "email": "ozankurt2@gmail.com",
-            "homepage": "https://ozankurt.com",
-            "role": "Owner",
+            "homepage": "https://ozankurt.com"
         }
     ],
     "require": {
