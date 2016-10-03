@@ -54,7 +54,3 @@ Any kind of code improvement or additions are appreciated.
 ## License
 
 The LiveCoding-API is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-## Credits
-
-This package was built on Wapaca's [livecoding-auth](https://github.com/Wapaca/livecoding-auth/). Special Thanks!
