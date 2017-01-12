@@ -45,14 +45,14 @@ class LiveCoding
      *
      * @var string
      */
-    protected $apiUrl = 'https://www.livecoding.tv:443/api';
+    protected $apiUrl = 'https://www.liveedu.tv:443/api';
 
     /**
      * Base oAuth token url of LiveCodingTV.
      *
      * @var string
      */
-    protected $tokenUrl = 'https://www.livecoding.tv/o/token/';
+    protected $tokenUrl = 'https://www.liveedu.tv/o/token/';
 
     /**
      * [$apiRequiredParams description].
@@ -147,7 +147,7 @@ class LiveCoding
             'response_type' => 'code',
         ];
 
-        $this->authLink = 'https://www.livecoding.tv/o/authorize/?'.http_build_query($query);
+        $this->authLink = 'https://www.liveedu.tv/o/authorize/?'.http_build_query($query);
     }
 
     /**
